@@ -15,6 +15,7 @@ class News extends Model
     use SoftDeletes;
 
     protected $fillable = [
+        'user_id',
         'image',
         'title',
         'slug',
@@ -25,6 +26,10 @@ class News extends Model
 
     public function author(){
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function category(){
+        return $this->belongsToMany(Category::class);
     }
 
     protected function casts(): array

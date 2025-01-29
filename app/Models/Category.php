@@ -16,4 +16,6 @@ class Category extends Model
         'text_color',
         'bg_color',
     ];
+
+    
 }
