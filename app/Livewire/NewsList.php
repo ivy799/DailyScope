@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Category;
 use App\Models\News;
 use Livewire\Component;
 use Livewire\Attributes\Computed;
@@ -19,6 +20,9 @@ class NewsList extends Component
     #[Url()]
     public $search = '';
 
+    #[Url()]
+    public $category = '';
+
     public function setSort($sort){
         $this->sort = ($sort == 'desc') ? 'desc' : 'asc';
         $this->resetPage();
@@ -33,6 +37,9 @@ class NewsList extends Component
     public function news(){
         return News::published()
         ->orderBy('published_at', $this->sort)
+        ->when(Category::where('slug', $this->category)->first(), function($query){
+            $query->withCategory($this->category);
+        })
         ->where('title', 'like', "%{$this->search}%")
         ->simplePaginate(5);
     }

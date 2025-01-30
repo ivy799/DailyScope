@@ -69,7 +69,7 @@ class NewsResource extends Resource
                         DateTimePicker::make('published_at')
                             ->nullable(),
                         Checkbox::make('featured'),
-                        Select::make('author')
+                        Select::make('user_id')
                             ->relationship('author', 'name')
                             ->searchable()
                             ->required(),
@@ -88,6 +88,9 @@ class NewsResource extends Resource
             ->columns([
                 ImageColumn::make('image'),
                 TextColumn::make('title')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('category.title')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('slug')

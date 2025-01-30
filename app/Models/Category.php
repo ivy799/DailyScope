@@ -17,5 +17,10 @@ class Category extends Model
         'bg_color',
     ];
 
+    public function news()
+    {
+        return $this->belongsToMany(News::class);
+    }
+
     
 }
