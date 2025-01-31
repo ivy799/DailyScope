@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\News;
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
 class LikeButton extends Component
@@ -22,9 +23,8 @@ class LikeButton extends Component
         }
 
         $user = Auth::user();
-        $hasLiked = $user->likes()->where('news_id', $this->news->id)->exists();
 
-        if($hasLiked){
+        if($user->hasLiked($this->news)){
             $user->likes()->detach($this->news);
             return;
         }   

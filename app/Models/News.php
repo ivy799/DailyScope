@@ -67,4 +67,8 @@ class News extends Model
         $isUrl = str_contains($this->image, 'http');
         return $isUrl ? $this->image : Storage::disk('public')->url($this->image);
     }
+
+    public function likes() {
+        return $this->belongsToMany(User::class, 'like_news')->withTimestamps();
+    }
 }
