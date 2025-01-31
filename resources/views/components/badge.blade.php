@@ -18,6 +18,6 @@
     };
 @endphp
 
-<a href="#"
+<button {{ $attributes }}
     class="{{ $text_color }} {{ $bg_color }} rounded-xl px-3 py-1 text-base">{{ $slot }}
-</a>
+</button>

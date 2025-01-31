@@ -17,9 +17,7 @@
             <div class="w-full">
                 <div class="grid grid-cols-3 gap-10 w-full">
                     @foreach ($featuredPosts as $post)
-                        <div class="md:col-span-1 col-span-3">
-                            <x-news.news-card :news="$post"/>
-                        </div>
+                        <x-news.news-card :news="$post" class="md:col-span-1 col-span-3"/>
                     @endforeach
                 </div>
             </div>
