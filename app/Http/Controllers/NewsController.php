@@ -15,4 +15,11 @@ class NewsController extends Controller
             'categories' => Category::whereHas('news')->take(10)->get()
         ]);
     }
+
+    public function show(News $news)
+    {
+        return view('news.show', [
+            'news' => $news
+        ]);
+    }
 }
