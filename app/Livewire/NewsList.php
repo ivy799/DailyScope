@@ -50,14 +50,15 @@ class NewsList extends Component
         return Category::where('slug', $this->category)->first();
     }
     
-    public function render()
-    {
-        return view('livewire.news-list');
-    }
 
     public function clearFilters(){
         $this->search = '';
         $this->category = '';
         $this->resetPage();
+    }
+
+    public function render()
+    {
+        return view('livewire.news-list');
     }
 }
