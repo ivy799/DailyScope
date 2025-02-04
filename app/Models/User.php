@@ -69,6 +69,10 @@ class User extends Authenticatable
         return $this->belongsToMany(News::class, 'like_news')->withTimestamps();
     }
 
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
     public function hasLiked(News $news) {
         return $this->likes()->where('news_id', $news->id)->exists();
     }

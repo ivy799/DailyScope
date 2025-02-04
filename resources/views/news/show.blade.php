@@ -23,7 +23,7 @@
         <div
             class="article-actions-bar my-6 flex text-sm items-center justify-between border-t border-b border-gray-100 py-4 px-2">
             <div class="flex items-center">
-                <livewire:like-button :key="$news->id" :$news />
+                <livewire:like-button :key="'likebutton-' . $news->id" :$news />
             </div>
             <div>
                 <div class="flex items-center">
@@ -41,7 +41,7 @@
             @endforeach
         </div>
 
-        <
+        <livewire:news-comment :key="'comments' . $news->id" :news="$news"/>
 
 
     </article>
