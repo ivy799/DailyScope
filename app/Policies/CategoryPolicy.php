@@ -48,6 +48,11 @@ class CategoryPolicy
         return $user->isAdmin() || $user->isEditor();
     }
 
+    public function deleteAny(User $user): bool
+    {
+        return $user->isAdmin();
+    }
+
     /**
      * Determine whether the user can restore the model.
      */
