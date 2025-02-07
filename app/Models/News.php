@@ -52,6 +52,15 @@ class News extends Model
         $query->whereHas('category', function($query) use ($category) {
             $query->where('slug', $category);
         });
+    }   
+
+    public function scopePopular($query){
+        $query->withCount('likes')
+        ->orderBy('likes_count', 'desc');
+    }
+
+    public function scopeSearch($query, $search=''){
+        $query->where('title', 'like', "%{$search}%");
     }
 
     public function scopeFeatured($query){

@@ -23,6 +23,9 @@ class NewsList extends Component
     #[Url()]
     public $category = '';
 
+    #[Url()]
+    public $popular = false;
+
     public function setSort($sort){
         $this->sort = ($sort == 'desc') ? 'desc' : 'asc';
         $this->resetPage();
@@ -37,11 +40,14 @@ class NewsList extends Component
     #[Computed()]
     public function news(){
         return News::published()
-        ->orderBy('published_at', $this->sort)
         ->when($this->activeCategory, function($query){
             $query->withCategory($this->category);
         })
-        ->where('title', 'like', "%{$this->search}%")
+        ->when($this->popular, function($query){
+            $query->popular();
+        })
+        ->search($this->search)
+        ->orderBy('published_at', $this->sort)
         ->simplePaginate(5);
     }
 
