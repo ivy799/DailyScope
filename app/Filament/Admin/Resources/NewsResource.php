@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 use App\Filament\Admin\Resources\NewsResource\Pages;
 use App\Filament\Admin\Resources\NewsResource\RelationManagers;
+use App\Filament\Admin\Resources\NewsResource\RelationManagers\CommentsRelationManager;
 use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Nette\Utils\ImageColor;
@@ -124,7 +125,7 @@ class NewsResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CommentsRelationManager::class
         ];
     }
 

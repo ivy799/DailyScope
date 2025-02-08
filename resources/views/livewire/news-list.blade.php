@@ -23,7 +23,7 @@
     </div>
     <div class="py-4">
         @foreach ($this->news as $item)
-            <x-news.news-item :news='$item' />
+            <x-news.news-item :key="$item->id" :news='$item' />
         @endforeach
     </div>
 
