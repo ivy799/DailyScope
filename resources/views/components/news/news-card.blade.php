@@ -9,7 +9,7 @@
     </a>
     <div class="mt-3">
         <div class="flex items-center mb-2 gap-x-5">
-            @if ($category = $news->category()->first())
+            @if ($category = $news->category->first())
                 <x-news.category-badge :category="$category" />
             @endif
             <p class="text-gray-500 text-sm">{{ $news->published_at }}</p>

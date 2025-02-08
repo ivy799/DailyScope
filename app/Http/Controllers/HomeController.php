@@ -14,8 +14,8 @@ class HomeController extends Controller
     public function __invoke(Request $request)
     {
         return view('home', [
-            'featuredPosts' => News::published()->featured()->latest('published_at')->take(3)->get(),
-            'latestPosts' => News::published()->latest('published_at')->take(9)->get(),
+            'featuredPosts' => News::published()->featured()->with('category')->latest('published_at')->take(3)->get(),
+            'latestPosts' => News::published()->with('category')->latest('published_at')->take(9)->get(),
         ]);
     }
 }

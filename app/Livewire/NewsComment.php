@@ -19,7 +19,7 @@ class NewsComment extends Component
 
     #[Computed()]
     public function comments(){
-        return $this->news->comments()->latest()->paginate(3);
+        return $this->news->comments()->with('user')->latest()->paginate(3);
     }
 
     public function submitComment(){

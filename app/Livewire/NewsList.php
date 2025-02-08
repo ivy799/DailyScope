@@ -40,6 +40,7 @@ class NewsList extends Component
     #[Computed()]
     public function news(){
         return News::published()
+        ->with('author','category')
         ->when($this->activeCategory, function($query){
             $query->withCategory($this->category);
         })
@@ -53,7 +54,10 @@ class NewsList extends Component
 
     #[Computed()]
     public function activeCategory(){
-        return Category::where('slug', $this->category)->first();
+        if($this->category === null || $this->category === ''){
+            return null;
+        }
+        return Category::where('slug', $this->category)->first() ?? null;
     }
     
 
