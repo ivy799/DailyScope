@@ -18,6 +18,7 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use App\Filament\Admin\Resources\UserResource\Widgets\UserStatsWidget;
+use App\Filament\Admin\Resources\CommentResource\Widgets\LatestComment;
 use App\Filament\Admin\Resources\NewsResource\Widgets\NewsPerMonthChart;
 
 class AdminPanelProvider extends PanelProvider
@@ -42,6 +43,7 @@ class AdminPanelProvider extends PanelProvider
                 // Widgets\FilamentInfoWidget::class,
                 UserStatsWidget::class,
                 NewsPerMonthChart::class,
+                LatestComment::class,
             ])
             ->middleware([
                 EncryptCookies::class,

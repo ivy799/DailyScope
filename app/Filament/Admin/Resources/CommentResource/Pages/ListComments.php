@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources\CommentResource\Pages;
 
 use App\Filament\Admin\Resources\CommentResource;
+use App\Filament\Admin\Resources\CommentResource\Widgets\LatestComment;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
@@ -16,4 +17,11 @@ class ListComments extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    // protected function getHeaderWidgets(): array
+    // {
+    //     return [
+    //         LatestComment::class,
+    //     ];
+    // }
 }
